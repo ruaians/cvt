@@ -1,0 +1,29 @@
+pkgname=cvt-app
+pkgver=0.1.0
+pkgrel=1
+pkgdesc="Conversor leve de imagens, áudio e vídeo (GTK4)"
+arch=('any')
+url="https://github.com/ruaians/cvt"
+license=('MIT')
+depends=('python' 'python-gobject' 'gtk4' 'ffmpeg' 'imagemagick' 'file')
+optdepends=('xdg-desktop-portal-gtk: seletor de pasta')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('SKIP')
+
+package() {
+  cd "cvt-$pkgver"
+
+  install -d "$pkgdir/usr/lib/cvt-app"
+  cp -r conv "$pkgdir/usr/lib/cvt-app/conv"
+  find "$pkgdir/usr/lib/cvt-app" -name __pycache__ -type d -prune -exec rm -rf {} +
+
+  install -Dm755 /dev/stdin "$pkgdir/usr/bin/cvt-app" <<'EOF'
+#!/bin/sh
+exec env PYTHONPATH=/usr/lib/cvt-app python3 -m conv "$@"
+EOF
+
+  sed 's|^Exec=.*|Exec=/usr/bin/cvt-app|' cvt.app.desktop > "$srcdir/cvt.app.desktop"
+  install -Dm644 "$srcdir/cvt.app.desktop" "$pkgdir/usr/share/applications/cvt.app.desktop"
+
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
