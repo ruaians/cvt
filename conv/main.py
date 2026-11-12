@@ -1,3 +1,4 @@
+import sys
 
 import gi
 
@@ -10,9 +11,7 @@ from .window import CvtWindow
 
 class CvtApplication(Gtk.Application):
     def __init__(self):
-        super().__init__(
-            application_id="io.github.cvt.app"
-        )
+        super().__init__(application_id="cvt.app")
 
     def do_activate(self):
         janela = self.props.active_window
@@ -23,5 +22,9 @@ class CvtApplication(Gtk.Application):
         janela.present()
 
 
-app = CvtApplication()
-app.run()
+def main():
+    return CvtApplication().run(sys.argv)
+
+
+if __name__ == "__main__":
+    sys.exit(main())
