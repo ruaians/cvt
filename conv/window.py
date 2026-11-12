@@ -366,7 +366,6 @@ class CvtWindow(Gtk.ApplicationWindow):
 
             .miniatura-arredondada {
                 border-radius: 10px;
-                overflow: hidden;
             }
 
             .miniatura-selecionada {
