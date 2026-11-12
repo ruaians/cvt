@@ -123,4 +123,4 @@ O motor (`engine.py`) não depende de GTK, então pode ser reaproveitado numa CL
 
 ## Licença
 
-Ainda não definida. Se for publicar, vale adicionar um arquivo `LICENSE` (MIT é a escolha mais comum para projetos pequenos).
+MIT. Veja o arquivo [LICENSE](LICENSE).
