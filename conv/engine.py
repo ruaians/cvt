@@ -97,6 +97,15 @@ CONVERSOES = {
             "-an",
             "{saida}"
         ],
+                "mp3": FF + [
+            "-vn", "-c:a", "libmp3lame", "-q:a", "2", "{saida}"
+        ],
+        "ogg": FF + [
+            "-vn", "-c:a", "libvorbis", "-q:a", "5", "{saida}"
+        ],
+        "wav": FF + [
+            "-vn", "-c:a", "pcm_s16le", "{saida}"
+        ],
     },
 }
 
