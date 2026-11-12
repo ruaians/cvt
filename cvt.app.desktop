@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=cvt
+Comment=Conversor leve de imagens, áudio e vídeo
+Exec=/home/rhyan/.local/bin/cvt-app
+Icon=applications-multimedia
+Terminal=false
+Categories=AudioVideo;Graphics;Utility;
+StartupWMClass=cvt.app
